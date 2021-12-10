@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import AddTodo from './AddTodo'
 import Button from "./Button"
 
 const Header = ({ title }) => {
@@ -9,6 +10,7 @@ const Header = ({ title }) => {
         <header>
             <h1>{title}</h1>
             <Button text="Add" color="green" onClick={onClick} />
+            <AddTodo />
         </header>
     )
 }
