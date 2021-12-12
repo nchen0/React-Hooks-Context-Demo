@@ -11,7 +11,7 @@ const AddTodo = () => {
 
     const addTodo = e => {
         e.preventDefault();
-        setTodos(prevTodos => [...prevTodos, { id: todos.length, text: task }])
+        setTodos(prevTodos => [...prevTodos, { id: todos.length + 1, text: task }])
         setTask('');
     }
 

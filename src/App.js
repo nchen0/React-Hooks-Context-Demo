@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Header from "./components/Header";
-import Tasks from './components/Tasks';
+import Todos from './components/Todos';
 import { TodoProvider } from "./context/TodoContext"
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <div className="container">
       <TodoProvider>
         <Header />
-        <Tasks />
+        <Todos />
       </TodoProvider>
     </div>
   );
