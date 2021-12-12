@@ -1,24 +1,35 @@
 import { useContext, useState } from 'react'
 import { TodoContext } from '../context/TodoContext'
+import axios from 'axios'
 
 const AddTodo = () => {
     const [todos, setTodos] = useContext(TodoContext)
-    const [task, setTask] = useState('')
+    const [inputValue, setInputValue] = useState('')
 
     const inputTask = e => {
-        setTask(e.target.value);
+        setInputValue(e.target.value);
     }
 
-    const addTodo = e => {
-        e.preventDefault();
-        setTodos(prevTodos => [...prevTodos, { id: todos.length + 1, text: task }])
-        setTask('');
+    const onSubmit = e => {
+        e.preventDefault()
+        if (!inputValue) {
+            alert("Please add a task")
+            return
+        }
+        addTodo()
+        setInputValue('')
+    }
+
+    const addTodo = async () => {
+        const body = { id: todos.length + 1, text: inputValue }
+        const response = await axios.post('http://localhost:5000/tasks', body)
+        setTodos([...todos, response.data])
     }
 
     return (
-        <form>
-            <input type="text" onChange={inputTask} value={task} />
-            <button onClick={addTodo}>Submit</button>
+        <form onSubmit={onSubmit}>
+            <input type="text" onChange={inputTask} value={inputValue} />
+            <button>Submit</button>
         </form>
     )
 }

@@ -3,20 +3,15 @@ import { useContext, useEffect } from "react"
 
 const Todos = () => {
     const [todos, setTodos] = useContext(TodoContext)
-    useEffect(() => {
-        const getTodos = async () => {
-            const todosFromServer = await fetchTodos()
-            setTodos(todosFromServer)
-        }
-
-        getTodos()
-    }, [])
-
-    const fetchTodos = async () => {
-        const response = await fetch('http://localhost:5000/tasks')
-        const data = await response.json();
-        return data;
+    const fetchTodos = async (url) => {
+        const response = await fetch(url)
+        const data = await response.json()
+        setTodos(data)
     }
+
+    useEffect(() => {
+        fetchTodos("http://localhost:5000/tasks")
+    }, [])
 
     return (
         <>

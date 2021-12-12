@@ -2,9 +2,6 @@ import PropTypes from 'prop-types'
 import AddTodo from './AddTodo'
 
 const Header = ({ title }) => {
-    const onClick = () => {
-    }
-
     return (
         <header>
             <h1>{title}</h1>
