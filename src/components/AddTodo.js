@@ -21,7 +21,7 @@ const AddTodo = () => {
     }
 
     const addTodo = async () => {
-        const body = { id: todos.length + 1, text: inputValue }
+        const body = { id: Math.random(), text: inputValue }
         const response = await axios.post('http://localhost:5000/tasks', body)
         setTodos([...todos, response.data])
     }
